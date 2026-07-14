@@ -31,7 +31,7 @@ export default function CSDashboard({ user, initialQueue }: CSDashboardProps) {
     const { data, error: qError } = await supabase
       .from("collect_data")
       .select("*, verifikasi_kartu!left(verifikasi_id)")
-      .is("verifikasi_kartu.verifikasi_id", null)
+      .is("verifikasi_kartu", null)
       .eq("cabang", userCabang);
 
     if (!qError && data) {
@@ -266,7 +266,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { data: queue, error } = await supabase
     .from("collect_data")
     .select("*, verifikasi_kartu!left(verifikasi_id)")
-    .is("verifikasi_kartu.verifikasi_id", null)
+    .is("verifikasi_kartu", null)
     .eq("cabang", userCabang);
 
   if (error) {

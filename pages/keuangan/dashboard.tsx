@@ -48,7 +48,7 @@ export default function KeuanganDashboard({ user, initialAktualQueue, initialSil
         aktual!left(aktual_id),
         bayar_silang!left(silang_id)
       `)
-      .is("aktual.aktual_id", null);
+      .is("aktual", null);
 
     if (!err1 && rawAktual) {
       const filtered = rawAktual.filter((item: any) => {
@@ -76,7 +76,7 @@ export default function KeuanganDashboard({ user, initialAktualQueue, initialSil
         bayar_silang!left(silang_id)
       `)
       .eq("cek_mutasi", true)
-      .is("bayar_silang.silang_id", null);
+      .is("bayar_silang", null);
 
     if (!err2 && rawSilang) {
       setSilangQueue(rawSilang);
@@ -462,7 +462,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       aktual!left(aktual_id),
       bayar_silang!left(silang_id)
     `)
-    .is("aktual.aktual_id", null);
+    .is("aktual", null);
 
   const filteredAktual = rawAktual
     ? rawAktual.filter((item: any) => {
@@ -489,7 +489,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       bayar_silang!left(silang_id)
     `)
     .eq("cek_mutasi", true)
-    .is("bayar_silang.silang_id", null);
+    .is("bayar_silang", null);
 
   if (err1) console.error("Error fetching aktual queue:", err1);
   if (err2) console.error("Error fetching silang queue:", err2);

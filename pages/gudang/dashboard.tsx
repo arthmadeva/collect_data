@@ -54,7 +54,7 @@ export default function GudangDashboard({ user, initialPraQueue, initialPostQueu
         ),
         pra_produksi!left(pra_id)
       `)
-      .is("pra_produksi.pra_id", null);
+      .is("pra_produksi", null);
 
     if (!err1 && q1) {
       setPraQueue(q1);
@@ -76,7 +76,7 @@ export default function GudangDashboard({ user, initialPraQueue, initialPostQueu
         ),
         post_produksi!left(post_id)
       `)
-      .is("post_produksi.post_id", null);
+      .is("post_produksi", null);
 
     if (!err2 && q2) {
       setPostQueue(q2);
@@ -564,7 +564,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       ),
       pra_produksi!left(pra_id)
     `)
-    .is("pra_produksi.pra_id", null);
+    .is("pra_produksi", null);
 
   // Post-Produksi Queue (pra_produksi left join post_produksi filter for null)
   const { data: postQueue, error: err2 } = await supabase
@@ -582,7 +582,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       ),
       post_produksi!left(post_id)
     `)
-    .is("post_produksi.post_id", null);
+    .is("post_produksi", null);
 
   if (err1) console.error("Error fetching pra queue:", err1);
   if (err2) console.error("Error fetching post queue:", err2);

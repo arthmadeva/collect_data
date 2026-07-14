@@ -52,7 +52,7 @@ export default function AdminDashboard({ user, initialQueue }: AdminDashboardPro
         ),
         konfirmasi_beli!left(konfirmasi_id)
       `)
-      .is("konfirmasi_beli.konfirmasi_id", null)
+      .is("konfirmasi_beli", null)
       .eq("collect_data.cabang", userCabang);
 
     if (!qError && data) {
@@ -497,7 +497,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       ),
       konfirmasi_beli!left(konfirmasi_id)
     `)
-    .is("konfirmasi_beli.konfirmasi_id", null)
+    .is("konfirmasi_beli", null)
     .eq("collect_data.cabang", userCabang);
 
   if (error) {
